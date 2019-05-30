@@ -60,6 +60,158 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-init-hexo-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/30/init-hexo-blog/" class="article-date">
+  <time datetime="2019-05-30T05:06:46.000Z" itemprop="datePublished">2019-05-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/30/init-hexo-blog/">Hexo + GitHub 搭建个人博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Hexo-GitHub-搭建个人博客"><a href="#Hexo-GitHub-搭建个人博客" class="headerlink" title="Hexo + GitHub 搭建个人博客"></a>Hexo + GitHub 搭建个人博客</h4><h5 id="第一步-环境配置"><a href="#第一步-环境配置" class="headerlink" title="第一步:环境配置"></a>第一步:环境配置</h5><p>本地需要安装 <a href="http://nodejs.cn/download/" target="_blank">NodeJS</a> 和 <a href="https://git-scm.com/downloads" target="_blank">Git</a> 。</p>
+<p>检查是否安装成功</p>
+<pre><code class="python">## Git
+git --version
+
+## NPM
+npm -v
+
+## NodeJS
+node -v</code></pre>
+<h5 id="安装-Hexo-框架"><a href="#安装-Hexo-框架" class="headerlink" title="安装 Hexo 框架"></a>安装 Hexo 框架</h5><pre><code class="python">## 安装 CNPM 设置淘宝镜像
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+## 安装 Hexo
+cnpm install -g hexo-cli
+
+## 验证是否安装成功
+hexo -v</code></pre>
+<h5 id="第二步-本地创建项目"><a href="#第二步-本地创建项目" class="headerlink" title="第二步:本地创建项目"></a>第二步:本地创建项目</h5><p>自建一个文件夹 然后进入文件下 比如 D:/hexo ,把 Hexo 安装进该文件夹里</p>
+<pre><code class="python">## 进入 hexo 目录
+cd D:\hexo
+
+## 初始化 hexo
+hexo init
+
+## hexo 项目目录结构
+## D:/hexo
+## │   .gitignore
+## │   package-lock.json
+## │   package.json
+## │   _config.yml
+## │   
+## ├───node_modules
+## │               
+## ├───scaffolds
+## │       
+## ├───source
+## │           
+## └───themes
+
+## 本地运行 hexo 访问 http://localhost:4000
+hexo s
+
+## INFO  Start processing
+## INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</code></pre>
+<h5 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h5><p>另打开一个 cmd 到 D:\hexo 目录下</p>
+<pre><code class="python">## 创建一个新的文件，名为 demo
+## 访问 http://localhost:4000 可以看到新添加 demo 文章
+hexo n demo
+
+## 主动生成
+hexo g
+
+## 清理已生成资源
+hexo clean</code></pre>
+<h5 id="第三步-部署到-GitHub"><a href="#第三步-部署到-GitHub" class="headerlink" title="第三步:部署到 GitHub"></a>第三步:部署到 GitHub</h5><p>一、安装 hexo-deployer-git 模块</p>
+<pre><code class="python">## 打开 cmd 到 D:\hexo 目录下
+cd D:\hexo
+
+## 安装 hexo-deployer-git
+npm install hexo-deployer-git</code></pre>
+<p>二、GitHub 仓库配置</p>
+<ul>
+<li><p>new repository 新建仓库</p>
+</li>
+<li><p>用户名.github.io 必须是这个格式，就会自动创建站点，完成即可</p>
+</li>
+</ul>
+<p>三、修改 hexo 配置文件</p>
+<pre><code class="python">## _config.yml
+
+## 定位到 Deployment
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type:
+
+## 需改为如下配置
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: https://github.com/mrcuijt/mrcuijt.github.io.git
+  branch: master</code></pre>
+<ul>
+<li><code>repo</code> 修改为自己的 GitHub 仓库地址</li>
+</ul>
+<p>四、发布到 GitHub</p>
+<pre><code class="python">## 发布到 GitHub
+hexo d
+
+## 如果是首次安装 Git 会提示输入 GitHub 的用户名和密码进行登录
+
+## 访问 https://mrcuijt.github.io </code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mrcuijt.github.io/2019/05/30/init-hexo-blog/" data-id="cjwaaacbs0002xkj3aeqcb856" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+      <!-- busuanzi_count -->
+
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+<!-- busuanzi_count -->
+      <!-- appreciate -->
+
+<div class="appreciate">
+  <a href="https://mrcuijt.github.io/images/weixin.png" title="微信" class="fancybox" rel="article0">
+    <img src="https://mrcuijt.github.io/images/weixin.png" alt="微信">
+  </a>
+  <a href="https://mrcuijt.github.io/images/alipay.png" title="支付宝" class="fancybox" rel="article0">
+    <img src="https://mrcuijt.github.io/images/alipay.png" alt="支付宝">
+  </a>
+</div>
+
+<!-- appreciate -->
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-index" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/30/index/" class="article-date">
@@ -143,7 +295,7 @@ public class LibraryImpl implements Library {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjwa1eroj0000q4j3trqnmjr0" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjwaaacbb0001xkj3tzk2m2q3" class="article-share-link">Share</a>
       
       
       <!-- busuanzi_count -->
@@ -165,24 +317,7 @@ public class LibraryImpl implements Library {
 </div>
 
 <!-- appreciate -->
-      <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC80NDQ4MS8yMTAxMw==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
+      
     </footer>
   </div>
   
@@ -225,7 +360,7 @@ public class LibraryImpl implements Library {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/hello-world/" data-id="cjwa1erp40001q4j39thp5aaa" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/hello-world/" data-id="cjwaaacb50000xkj38opbeurj" class="article-share-link">Share</a>
       
       
       <!-- busuanzi_count -->
@@ -247,24 +382,7 @@ public class LibraryImpl implements Library {
 </div>
 
 <!-- appreciate -->
-      <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC80NDQ4MS8yMTAxMw==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
+      
     </footer>
   </div>
   
@@ -282,9 +400,23 @@ public class LibraryImpl implements Library {
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -301,6 +433,10 @@ public class LibraryImpl implements Library {
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/05/30/init-hexo-blog/">Hexo + GitHub 搭建个人博客</a>
+          </li>
         
           <li>
             <a href="/2019/05/30/index/">index</a>
