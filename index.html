@@ -180,7 +180,7 @@ hexo d
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/init-hexo-blog/" data-id="cjwaaacbs0002xkj3aeqcb856" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/init-hexo-blog/" data-id="cjwa751af0000hkj3c8zdvyo1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -295,7 +295,7 @@ public class LibraryImpl implements Library {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjwaaacbb0001xkj3tzk2m2q3" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjwa1eroj0000q4j3trqnmjr0" class="article-share-link">Share</a>
       
       
       <!-- busuanzi_count -->
@@ -360,7 +360,7 @@ public class LibraryImpl implements Library {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/hello-world/" data-id="cjwaaacb50000xkj38opbeurj" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/hello-world/" data-id="cjwa1erp40001q4j39thp5aaa" class="article-share-link">Share</a>
       
       
       <!-- busuanzi_count -->
@@ -455,6 +455,27 @@ public class LibraryImpl implements Library {
         
       </div>
       <footer id="footer">
+  <!-- Live2D -->
+
+<div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d" style="opacity:0;"></canvas>
+    <div class="hide-button">隐藏</div>
+    <div class="switch-button">变装</div>
+    <div class="change-button">切换</div>
+    <div>modules : pio/,xuexiaoban/</div>
+</div>
+<script type="text/javascript">
+    var nospecialtip = true;
+    var nohitokoto = true;
+    var modules = "pio/,xuexiaoban/".split(",");
+    var basic_module_path = "http://localhost:4000/live2d/modules/";
+    var live2d_Path = basic_module_path + modules[0];
+    var message_Path = "http://localhost:4000/live2d/message/";
+    var home_Path = "http://localhost:4000/";
+</script>
+
+<!-- Live2D -->
   
   <div class="outer">
     <div id="footer-info" class="inner">
@@ -479,7 +500,7 @@ public class LibraryImpl implements Library {
 </nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
@@ -493,10 +514,21 @@ public class LibraryImpl implements Library {
 
 
 
+<!-- SyntaxHighlighter -->
+
   <script src="/js/sh/shcore.js"></script>
   <script src="/js/sh/shbrushall.js"></script>
   <script src="/js/sh/init.js"></script>
 
+<!-- SyntaxHighlighter -->
+
+<!-- Live2D -->
+
+  <script src="/js/live2d/live2d.js"></script>
+  <script src="/js/live2d/message.js"></script>
+  <script src="/js/live2d/run_local.js"></script>
+
+<!-- Live2D -->
 
   </div>
 </body>
