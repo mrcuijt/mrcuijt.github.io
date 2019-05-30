@@ -5,24 +5,27 @@
   
 
   
-  <title>index | Hexo</title>
+  <title>index | Mrcuijt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="Hello World  Image @WebService(endpointInterface=&amp;quot;com.mycompany.Library&amp;quot;) public class LibraryImpl implements Library {     private static Map&amp;lt;Integer, Book&amp;gt; store = new HashMap&amp;lt;Int">
+<meta property="og:type" content="article">
 <meta property="og:title" content="index">
 <meta property="og:url" content="http://mrcuijt.github.io/2019/05/30/index/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Mrcuijt&#39;s Blog">
+<meta property="og:description" content="Hello World  Image @WebService(endpointInterface=&amp;quot;com.mycompany.Library&amp;quot;) public class LibraryImpl implements Library {     private static Map&amp;lt;Integer, Book&amp;gt; store = new HashMap&amp;lt;Int">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T18:34:50.551Z">
+<meta property="og:image" content="http://mrcuijt.github.io/2019/05/30/index/index-demo.jpg">
+<meta property="og:updated_time" content="2019-05-29T20:22:58.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="index">
+<meta name="twitter:description" content="Hello World  Image @WebService(endpointInterface=&amp;quot;com.mycompany.Library&amp;quot;) public class LibraryImpl implements Library {     private static Map&amp;lt;Integer, Book&amp;gt; store = new HashMap&amp;lt;Int">
+<meta name="twitter:image" content="http://mrcuijt.github.io/2019/05/30/index/index-demo.jpg">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Mrcuijt&#39;s Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -35,7 +38,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Mrcuijt&#39;s Blog</a>
       </h1>
       
     </div>
@@ -83,13 +86,88 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Hello World</p>
+<p><img src="/2019/05/30/index/index-demo.jpg" alt></p>
+<p>Image</p>
+<pre><code class="java">@WebService(endpointInterface=&quot;com.mycompany.Library&quot;)
+public class LibraryImpl implements Library {
+    private static Map&lt;Integer, Book&gt; store = new HashMap&lt;Integer, Book&gt;();
+    private static int currentId=0;
+
+    @Override
+    public Book addBook(Book book) {
+        book.setId(++currentId);
+        store.put(book.getId(), book);
+        return book;
+    }
+
+    @Override
+    public Book getBook(int id) {
+        return store.get(id);
+    }
+
+    @Override
+    public Book[] getBooksArray() {
+        List&lt;Book&gt; l = new ArrayList&lt;Book&gt;();
+        Iterator&lt;Integer&gt; it = store.keySet().iterator();
+        while(it.hasNext()) {
+            l.add(store.get(it.next()));
+        }
+        Book[] r = l.toArray(new Book[1]);
+        System.out.println(r.length);
+        return r;
+    }
+
+    @Override
+    public List&lt;Book&gt; getBookList() {
+        List&lt;Book&gt; l = new ArrayList&lt;Book&gt;();
+        Iterator&lt;Integer&gt; it = store.keySet().iterator();
+        while(it.hasNext()) {
+            l.add(store.get(it.next()));
+        }
+        return l;
+    }
+
+    @Override
+    public Map&lt;Integer, Book&gt; getBookMap() {
+        return store;
+    }
+
+    @Override
+    public boolean deleteBook(int id) {
+        if (store.containsKey(id)) {
+            store.remove(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+}</code></pre>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjw9kutel00002sj39hobabgs" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjwa1eroj0000q4j3trqnmjr0" class="article-share-link">Share</a>
       
       
+      <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NDQ4MS8yMTAxMw==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
     </footer>
   </div>
   
@@ -155,7 +233,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
+      &copy; 2019 Cui<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -179,6 +257,11 @@
 
 <script src="/js/script.js"></script>
 
+
+
+  <script src="/js/sh/shcore.js"></script>
+  <script src="/js/sh/shbrushall.js"></script>
+  <script src="/js/sh/init.js"></script>
 
 
   </div>
