@@ -1658,6 +1658,9 @@ pre .javascript .function {
   line-height: 1em !important;
   font-family: "courier new" !important;
 }
+.appreciate {
+  text-align: center;
+}
 @media screen and (min-width: 768px) {
   #sidebar {
     display: inline;
