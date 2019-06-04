@@ -85,7 +85,7 @@
         <div class="toc-parent">
   <div id="toc" class="toc-article">
     <div class="toc-title">目录</div>
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo-GitHub-源码管理"><span class="toc-text">Hexo + GitHub 源码管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#从-GitHub-检出托管的-Hexo-静态站点"><span class="toc-text">从 GitHub 检出托管的 Hexo 静态站点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建新的-dev-空白分支"><span class="toc-text">创建新的 dev 空白分支</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除当前目录空白分支下全部文件"><span class="toc-text">删除当前目录空白分支下全部文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#提交-Hexo-源码到-dev-分支"><span class="toc-text">提交 Hexo 源码到 dev 分支</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo-GitHub-源码管理"><span class="toc-text">Hexo + GitHub 源码管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#从-GitHub-检出托管的-Hexo-静态站点"><span class="toc-text">从 GitHub 检出托管的 Hexo 静态站点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建新的-dev-空白分支"><span class="toc-text">创建新的 dev 空白分支</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除当前目录空白分支下全部文件"><span class="toc-text">删除当前目录空白分支下全部文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#提交-Hexo-源码到-dev-分支"><span class="toc-text">提交 Hexo 源码到 dev 分支</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li></ol></li></ol>
   </div>
 </div>
         <h4 id="Hexo-GitHub-源码管理"><a href="#Hexo-GitHub-源码管理" class="headerlink" title="Hexo + GitHub 源码管理"></a>Hexo + GitHub 源码管理</h4><h5 id="从-GitHub-检出托管的-Hexo-静态站点"><a href="#从-GitHub-检出托管的-Hexo-静态站点" class="headerlink" title="从 GitHub 检出托管的 Hexo 静态站点"></a>从 GitHub 检出托管的 Hexo 静态站点</h5><ul>
@@ -148,11 +148,31 @@ git commit -m &quot;1、Hexo Dev Init&quot;</code></pre>
 </ul>
 <pre><code class="python">git push --set-upstream origin dev</code></pre>
 <p>完成</p>
+<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><ul>
+<li>Windows 系统下的 Git 默认设置对大小写不敏感</li>
+</ul>
+<p> <strong>在修改 文章 分类的大小写后，在 GitHub 上展示出来的仍然是小写</strong></p>
+<ul>
+<li><p>解决方案</p>
+<ul>
+<li><p>博客文件夹中找到 <strong>.deploy_git</strong> 文件夹，进入 <strong>.git</strong> 文件夹</p>
+<ul>
+<li>编辑 <strong>config</strong> 文件，设置 <strong>ignorecase = false</strong></li>
+</ul>
+</li>
+<li><p>博客目录进入 <strong>.git</strong> 文件夹</p>
+<ul>
+<li>编辑 <strong>config</strong> 文件，设置 <strong>ignorecase = false</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/06/05/hexo/hexo-dev/" data-id="cjwi1c0990005ykj3gi7wabym" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/06/05/hexo/hexo-dev/" data-id="cjwi1z4og0003ssj3kyg7itj1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -225,7 +245,7 @@ git commit -m &quot;1、Hexo Dev Init&quot;</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/06/05/hello-world/" data-id="cjwi1c07f0001ykj3auku1umi" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/06/05/hello-world/" data-id="cjwi1z4m10000ssj3v0h4gx4i" class="article-share-link">Share</a>
       
       
       <!-- busuanzi_count -->
@@ -566,7 +586,7 @@ hexo s</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/06/04/hexo/hexo-customer/" data-id="cjwi1c0910002ykj3apzxukcm" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/06/04/hexo/hexo-customer/" data-id="cjwi1z4oc0002ssj3uywuvxxn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -724,7 +744,7 @@ hexo d
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/hexo/hexo-init/" data-id="cjwi1c0930003ykj3avc8srb5" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/hexo/hexo-init/" data-id="cjwi1z4p80008ssj3ev1e2lsd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -845,7 +865,7 @@ public class LibraryImpl implements Library {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjwi1c0720000ykj3fbfpwzo0" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjwi1z4m80001ssj34po3egiz" class="article-share-link">Share</a>
       
       
       <!-- busuanzi_count -->
