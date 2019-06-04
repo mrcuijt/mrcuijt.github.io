@@ -18,7 +18,7 @@
     <link rel="alternate" href="/atom.xml" title="Mrcuijt&#39;s Blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   
   <link rel="stylesheet" href="/css/style.css">
@@ -60,9 +60,352 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-init-hexo-blog" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hexo/hexo-customer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/30/init-hexo-blog/" class="article-date">
+    <a href="/2019/06/04/hexo/hexo-customer/" class="article-date">
+  <time datetime="2019-06-04T02:15:36.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/hexo/hexo-customer/">Hexo 博客配置 landscape 主题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="toc-parent">
+  <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#添加-ICON"><span class="toc-text">添加 ICON</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加-RSS"><span class="toc-text">添加 RSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加阅读统计"><span class="toc-text">添加阅读统计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加文章评论功能"><span class="toc-text">添加文章评论功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加文章目录"><span class="toc-text">添加文章目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加看板娘"><span class="toc-text">添加看板娘</span></a></li></ol>
+  </div>
+</div>
+        <h4 id="添加-ICON"><a href="#添加-ICON" class="headerlink" title="添加 ICON"></a>添加 ICON</h4><p>修改在 <strong>themes/landscape</strong> 目录下的 <strong>_config.yml</strong> 主题样式配置文件</p>
+<p>将其中的 <strong>favicon</strong> 设置为 <strong>/favicon.ico</strong></p>
+<pre><code class="python"># Miscellaneous
+google_analytics:
+gauges_analytics:
+favicon: /favicon.ico
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:</code></pre>
+<p>将自己的 <strong>favicon.ico</strong> 放到 <strong>themes/landscape/source</strong> 目录下即可</p>
+<h4 id="添加-RSS"><a href="#添加-RSS" class="headerlink" title="添加 RSS"></a>添加 RSS</h4><p>在 <strong>_config.yml</strong> 全局配置文件中有默认的 RSS 设置，默认留空。这时使用 Hexo 生成的 Feed 链接，需要先安装 <strong>hexo-generator-feed</strong> 插件。</p>
+<pre><code class="python">## 安装 hexo-generator-feed
+cnpm install --save hexo-generator-feed</code></pre>
+<p>修改全局配置文件，在最后添加以下代码</p>
+<pre><code class="python"># RSS 订阅插件
+feed: 
+  type: atom
+  path: atom.xml
+  limit: 0
+
+plugins: hexo-generate-feed</code></pre>
+<h4 id="添加阅读统计"><a href="#添加阅读统计" class="headerlink" title="添加阅读统计"></a>添加阅读统计</h4><p>添加 <a href="http://ibruce.info/2015/04/04/busuanzi/" target="_blank">不蒜子</a> 浏览数统计</p>
+<ul>
+<li>修改 <strong>themes\landscape\layout_partial\after-footer.ejs</strong></li>
+</ul>
+<pre><code class="xml">&lt;% if (config.busuanzi_count.enable){ %&gt;
+&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
+&lt;% } %&gt;</code></pre>
+<ul>
+<li>在 <strong>themes\landscape\layout_partial\</strong> 下，添加 <strong>busuanzi_count.ejs</strong></li>
+</ul>
+<pre><code class="xml">&lt;!-- busuanzi_count --&gt;
+&lt;% if (config.busuanzi_count.enable){ %&gt;
+&lt;span id=&quot;busuanzi_container_page_pv&quot;&gt;
+  本文总阅读量&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;次
+&lt;/span&gt;
+&lt;% } %&gt;
+&lt;!-- busuanzi_count --&gt;</code></pre>
+<ul>
+<li><p>修改 <strong>themes\landscape\layout_partial\</strong> 下 <strong>article.ejs</strong></p>
+<p>在 footer 标签尾部添加对 busuanzi_count.ejs** 的引用</p>
+</li>
+</ul>
+<pre><code class="xml">    &lt;footer class=&quot;article-footer&quot;&gt;
+      &lt;a data-url=&quot;&lt;%- post.permalink %&gt;&quot; data-id=&quot;&lt;%= post._id %&gt;&quot; class=&quot;article-share-link&quot;&gt;&lt;%= __(&#39;share&#39;) %&gt;&lt;/a&gt;
+      &lt;% if (post.comments &amp;&amp; config.disqus_shortname){ %&gt;
+        &lt;a href=&quot;&lt;%- post.permalink %&gt;#disqus_thread&quot; class=&quot;article-comment-link&quot;&gt;&lt;%= __(&#39;comment&#39;) %&gt;&lt;/a&gt;
+      &lt;% } %&gt;
+      &lt;%- partial(&#39;post/tag&#39;) %&gt;
+      &lt;%- partial(&#39;busuanzi_count&#39;) %&gt;
+    &lt;/footer&gt;</code></pre>
+<ul>
+<li>修改 <strong>themes\landscape\layout_partial\</strong> 下 <strong>footer.ejs</strong></li>
+</ul>
+<pre><code class="xml">&lt;footer id=&quot;footer&quot;&gt;
+  &lt;% if (theme.sidebar === &#39;bottom&#39;){ %&gt;
+    &lt;%- partial(&#39;_partial/sidebar&#39;) %&gt;
+  &lt;% } %&gt;
+  &lt;div class=&quot;outer&quot;&gt;
+    &lt;div id=&quot;footer-info&quot; class=&quot;inner&quot;&gt;
+      &amp;copy; &lt;%= date(new Date(), &#39;YYYY&#39;) %&gt; &lt;%= config.author || config.title %&gt;&lt;br&gt;
+      &lt;!-- busuanzi_count --&gt;
+      &lt;% if (config.busuanzi_count.enable){ %&gt;
+      本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次
+      本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次&lt;br&gt;
+      &lt;% } %&gt;
+      &lt;!-- busuanzi_count --&gt;
+      &lt;%= __(&#39;powered_by&#39;) %&gt; &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot;&gt;Hexo&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+<h4 id="添加文章评论功能"><a href="#添加文章评论功能" class="headerlink" title="添加文章评论功能"></a>添加文章评论功能</h4><p>NexT 支持的第三方的评论系统有很多，不过不少已经关闭不再可用了，而且对于国内来说比较友好的现在应该就只有<a href="https://livere.com" target="_blank">来必力</a>。</p>
+<p>注册后点击导航上边的安装，选择免费的 city 版本.</p>
+<ul>
+<li>在 <strong>themes\landscape\layout_partial\</strong> 下添加 <strong>livere.ejs</strong></li>
+</ul>
+<pre><code class="xml">&lt;!-- 来必力City版安装代码 --&gt;
+&lt;div id=&quot;lv-container&quot; data-id=&quot;city&quot; data-uid=&quot;&quot;&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === &#39;function&#39;) { return; }
+
+       j = d.createElement(s);
+       j.src = &#39;https://cdn-city.livere.com/js/embed.dist.js&#39;;
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, &#39;script&#39;);
+&lt;/script&gt;
+&lt;noscript&gt; 为正常使用来必力评论功能请激活JavaScript&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;!-- City版安装代码已完成 --&gt;</code></pre>
+<ul>
+<li><p>修改 <strong>themes\landscape\layout_partial\article.ejs</strong></p>
+<p>在 footer 标签尾部添加对 <strong>livere.ejs</strong> 的引用</p>
+</li>
+</ul>
+<pre><code class="xml">    &lt;footer class=&quot;article-footer&quot;&gt;
+      &lt;a data-url=&quot;&lt;%- post.permalink %&gt;&quot; data-id=&quot;&lt;%= post._id %&gt;&quot; class=&quot;article-share-link&quot;&gt;&lt;%= __(&#39;share&#39;) %&gt;&lt;/a&gt;
+      &lt;% if (post.comments &amp;&amp; config.disqus_shortname){ %&gt;
+        &lt;a href=&quot;&lt;%- post.permalink %&gt;#disqus_thread&quot; class=&quot;article-comment-link&quot;&gt;&lt;%= __(&#39;comment&#39;) %&gt;&lt;/a&gt;
+      &lt;% } %&gt;
+      &lt;%- partial(&#39;post/tag&#39;) %&gt;
+      &lt;% if (!index){ %&gt;
+        &lt;%- partial(&#39;livere&#39;) %&gt;
+      &lt;% } %&gt;
+    &lt;/footer&gt;</code></pre>
+<p>效果如下：</p>
+<p><img src="/2019/06/04/hexo/hexo-customer/hexo-customer-livere-preview.png" alt="来必力用户评论"></p>
+<h4 id="添加文章目录"><a href="#添加文章目录" class="headerlink" title="添加文章目录"></a>添加文章目录</h4><p>一、下载解压 <strong>toc</strong></p>
+<p>下载 <a href="/download/hexo-customer/toc.zip" target="_blank">toc.zip</a></p>
+<pre><code class="python">## 解压得到
+css
+js
+post
+widget</code></pre>
+<p>二、修改 Hexo 主题</p>
+<ul>
+<li><p>将 <strong>widget</strong> 下的文件添加到 <strong>themes\landscape\layout_widget</strong> 目录下</p>
+<ul>
+<li>修改 Hexo 主题配置文件 _config.yml</li>
+</ul>
+<p>在 Sidebar 后添加一个 toc</p>
+</li>
+</ul>
+<pre><code class="python"># Sidebar
+sidebar: right
+widgets:
+- category
+- tag
+- tagcloud
+- archive
+- recent_posts
+- toc</code></pre>
+<ul>
+<li><p>将 <strong>post</strong> 下的文件添加到 <strong>themes\landscape\layout_partial\post</strong> 目录下</p>
+<ul>
+<li>修改 <strong>themes\landscape\layout_partial\article.ejs</strong></li>
+</ul>
+<p>在 <code>&lt;%- post.content %&gt;</code> 上面添加 <code>&lt;%- partial(&#39;post/toc&#39;) %&gt;</code></p>
+</li>
+</ul>
+<pre><code class="xml">    &lt;div class=&quot;article-entry&quot; itemprop=&quot;articleBody&quot;&gt;
+      &lt;% if (post.excerpt &amp;&amp; index){ %&gt;
+        &lt;%- post.excerpt %&gt;
+        &lt;% if (theme.excerpt_link){ %&gt;
+          &lt;p class=&quot;article-more-link&quot;&gt;
+            &lt;a href=&quot;&lt;%- url_for(post.path) %&gt;#more&quot;&gt;&lt;%= theme.excerpt_link %&gt;&lt;/a&gt;
+          &lt;/p&gt;
+        &lt;% } %&gt;
+      &lt;% } else { %&gt;
+        &lt;%- partial(&#39;post/toc&#39;) %&gt;
+        &lt;%- post.content %&gt;
+      &lt;% } %&gt;
+    &lt;/div&gt;</code></pre>
+<ul>
+<li><p>将 <strong>css</strong> 下的文件添加到 <strong>themes\landscape\source\css_partial\post</strong> 目录下</p>
+</li>
+<li><p>修改 <strong>themes\landscape\source\css\style.styl</strong> 文件</p>
+<p>使用相对路径添加样式的导入</p>
+</li>
+</ul>
+<pre><code class="css">@import &quot;_partial/post/toc&quot;</code></pre>
+<ul>
+<li><p>将 <strong>js</strong> 下的文件添加到 <strong>themes\landscape\source\js</strong>目录下</p>
+<ul>
+<li>修改 <strong>themes\landscape\layout_partial\after-footer.ejs</strong></li>
+</ul>
+</li>
+</ul>
+<pre><code class="xml">&lt;!-- Toc --&gt;
+&lt;%- js(&#39;js/toc&#39;) %&gt;
+&lt;!-- Toc --&gt;</code></pre>
+<h4 id="添加看板娘"><a href="#添加看板娘" class="headerlink" title="添加看板娘"></a>添加看板娘</h4><p>一、下载解压 <strong>live2d</strong> 插件</p>
+<p>看板娘插件 <a href="/download/hexo-customer/live2d.zip" target="_blank">live2d.zip</a></p>
+<pre><code class="python">## 解压得到
+css
+js
+model</code></pre>
+<p>二、修改 Hexo 全局 <strong>_config.yml</strong> 配置文件</p>
+<ul>
+<li>在最下方添加 <strong>Live2D</strong> 配置</li>
+</ul>
+<pre><code class="python">## 开始
+Live2D: 
+   enable: true ## 启用 Live2D
+   modules: pio/,xuexiaoban/ ## 设置 live2d 模块模型
+   basic_module_path: http://localhost:4000/live2d/modules/
+   message_Path: http://localhost:4000/live2d/message/
+   home_Path: http://localhost:4000/
+## 结束</code></pre>
+<p>三、修改 Hexo landscape 主题模板引入 <strong>Live2D</strong></p>
+<ul>
+<li>在 <strong>themes\landscape\layout_partial\live2d\</strong> 目录下，添加 <strong>live2d.ejs</strong></li>
+</ul>
+<pre><code class="xml">&lt;!-- Live2D --&gt;
+&lt;% if (config.Live2D.enable){ %&gt;
+&lt;div id=&quot;landlord&quot;&gt;
+    &lt;div class=&quot;message&quot; style=&quot;opacity:0&quot;&gt;&lt;/div&gt;
+    &lt;canvas id=&quot;live2d&quot; width=&quot;280&quot; height=&quot;250&quot; class=&quot;live2d&quot; style=&quot;opacity:0;&quot;&gt;&lt;/canvas&gt;
+    &lt;div class=&quot;hide-button&quot;&gt;隐藏&lt;/div&gt;
+    &lt;div class=&quot;switch-button&quot;&gt;变装&lt;/div&gt;
+    &lt;div class=&quot;change-button&quot;&gt;切换&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var nospecialtip = true;
+    var nohitokoto = true;
+    var modules = &quot;&lt;%- config.Live2D.modules %&gt;&quot;.split(&quot;,&quot;);
+    var basic_module_path = &quot;&lt;%- config.Live2D.basic_module_path %&gt;&quot;;
+    var live2d_Path = basic_module_path + modules[0];
+    var message_Path = &quot;&lt;%- config.Live2D.message_Path %&gt;&quot;;
+    var home_Path = &quot;&lt;%- config.Live2D.home_Path %&gt;&quot;;
+&lt;/script&gt;
+&lt;% } %&gt;
+&lt;!-- Live2D --&gt;</code></pre>
+<ul>
+<li><p>修改 <strong>themes\landscape\layout_partial\footer.ejs</strong></p>
+<ul>
+<li>添加对 <strong>live2d.ejs</strong> 的引用。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="xml">&lt;footer id=&quot;footer&quot;&gt;
+  &lt;!-- live2d --&gt;
+  &lt;%- partial(&#39;live2d/live2d&#39;) %&gt;
+  &lt;!-- live2d --&gt;
+  &lt;% if (theme.sidebar === &#39;bottom&#39;){ %&gt;
+    &lt;%- partial(&#39;_partial/sidebar&#39;) %&gt;
+  &lt;% } %&gt;
+  &lt;div class=&quot;outer&quot;&gt;
+    &lt;div id=&quot;footer-info&quot; class=&quot;inner&quot;&gt;
+      &amp;copy; &lt;%= date(new Date(), &#39;YYYY&#39;) %&gt; &lt;%= config.author || config.title %&gt;&lt;br&gt;
+      &lt;%= __(&#39;powered_by&#39;) %&gt; &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot;&gt;Hexo&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+<ul>
+<li><p>将 <strong>js</strong> 目录下的文件添加到 <strong>themes\landscape\source\js\live2d</strong> 目录下</p>
+<ul>
+<li>修改 <strong>themes\landscape\layout_partial\after-footer.ejs</strong></li>
+</ul>
+<p>在最底部以相对路径方式添加对 <strong>Live2D</strong> 的引用</p>
+</li>
+</ul>
+<pre><code class="xml">&lt;!-- Live2D --&gt;
+&lt;% if (config.Live2D.enable){ %&gt;
+  &lt;%- js(&#39;js/live2d/live2d&#39;) %&gt;
+  &lt;%- js(&#39;js/live2d/message&#39;) %&gt;
+  &lt;%- js(&#39;js/live2d/run_local&#39;) %&gt;
+&lt;% } %&gt;
+&lt;!-- Live2D --&gt;</code></pre>
+<ul>
+<li><p>将 <strong>css</strong> 目录下的文件添加到 <strong>themes\landscape\source\css\live2d</strong> 目录下</p>
+<ul>
+<li>修改 <strong>themes\landscape\source\css\style.styl</strong> 文件</li>
+</ul>
+<p>使用相对路径添加样式的导入</p>
+</li>
+</ul>
+<pre><code class="css">@import &quot;live2d/live2d&quot;</code></pre>
+<ul>
+<li>将 <strong>model</strong> 目录下的文件添加到 <strong>themes\landscape\source\live2d</strong> 目录下</li>
+</ul>
+<p>四、启动 Hexo 查看效果</p>
+<pre><code class="python">## 本地启动 hexo
+hexo s</code></pre>
+<p>访问 <a href="http://localhost:4000/" target="_blank">http://localhost:4000/</a> 查看效果</p>
+<p><img src="/2019/06/04/hexo/hexo-customer/hexo-customer-live2d-preview.png" alt="看板娘"></p>
+<p>参考链接：</p>
+<ul>
+<li><p>GitHub <a href="https://github.com/AlanDecode/Live2D-Typecho-Plugin" target="_blank">Live2D-Typecho-Plugin</a></p>
+</li>
+<li><p><a href="https://www.fghrsh.net/post/123.html" target="_blank">网页添加 Live2D 看板娘</a></p>
+</li>
+</ul>
+<p>更多 live2d 模型下载 <a href="https://mx-model.ga/" target="_blank">梦象</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mrcuijt.github.io/2019/06/04/hexo/hexo-customer/" data-id="cjwhwe3y20002fwj3alnp7k0v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+      <!-- busuanzi_count -->
+
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+<!-- busuanzi_count -->
+      <!-- appreciate -->
+
+<div class="appreciate">
+  <a href="https://mrcuijt.github.io/images/weixin.png" title="微信" class="fancybox" rel="article0">
+    <img src="https://mrcuijt.github.io/images/weixin.png" alt="微信">
+  </a>
+  <a href="https://mrcuijt.github.io/images/alipay.png" title="支付宝" class="fancybox" rel="article0">
+    <img src="https://mrcuijt.github.io/images/alipay.png" alt="支付宝">
+  </a>
+</div>
+
+<!-- appreciate -->
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo/hexo-init" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/30/hexo/hexo-init/" class="article-date">
   <time datetime="2019-05-30T05:06:46.000Z" itemprop="datePublished">2019-05-30</time>
 </a>
     
@@ -74,7 +417,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/30/init-hexo-blog/">Hexo + GitHub 搭建个人博客</a>
+      <a class="article-title" href="/2019/05/30/hexo/hexo-init/">Hexo + GitHub 搭建个人博客</a>
     </h1>
   
 
@@ -82,7 +425,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Hexo-GitHub-搭建个人博客"><a href="#Hexo-GitHub-搭建个人博客" class="headerlink" title="Hexo + GitHub 搭建个人博客"></a>Hexo + GitHub 搭建个人博客</h4><h5 id="第一步-环境配置"><a href="#第一步-环境配置" class="headerlink" title="第一步:环境配置"></a>第一步:环境配置</h5><p>本地需要安装 <a href="http://nodejs.cn/download/" target="_blank">NodeJS</a> 和 <a href="https://git-scm.com/downloads" target="_blank">Git</a> 。</p>
+        <div class="toc-parent">
+  <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一步-环境配置"><span class="toc-text">第一步:环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#安装-Hexo-框架"><span class="toc-text">安装 Hexo 框架</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二步-本地创建项目"><span class="toc-text">第二步:本地创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#新建文章"><span class="toc-text">新建文章</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三步-部署到-GitHub"><span class="toc-text">第三步:部署到 GitHub</span></a></li></ol>
+  </div>
+</div>
+        <h4 id="第一步-环境配置"><a href="#第一步-环境配置" class="headerlink" title="第一步:环境配置"></a>第一步:环境配置</h4><p>本地需要安装 <a href="http://nodejs.cn/download/" target="_blank">NodeJS</a> 和 <a href="https://git-scm.com/downloads" target="_blank">Git</a> 。</p>
 <p>检查是否安装成功</p>
 <pre><code class="python">## Git
 git --version
@@ -100,7 +449,7 @@ cnpm install -g hexo-cli
 
 ## 验证是否安装成功
 hexo -v</code></pre>
-<h5 id="第二步-本地创建项目"><a href="#第二步-本地创建项目" class="headerlink" title="第二步:本地创建项目"></a>第二步:本地创建项目</h5><p>自建一个文件夹 然后进入文件下 比如 D:/hexo ,把 Hexo 安装进该文件夹里</p>
+<h4 id="第二步-本地创建项目"><a href="#第二步-本地创建项目" class="headerlink" title="第二步:本地创建项目"></a>第二步:本地创建项目</h4><p>自建一个文件夹 然后进入文件下 比如 D:/hexo ,把 Hexo 安装进该文件夹里</p>
 <pre><code class="python">## 进入 hexo 目录
 cd D:\hexo
 
@@ -137,7 +486,7 @@ hexo g
 
 ## 清理已生成资源
 hexo clean</code></pre>
-<h5 id="第三步-部署到-GitHub"><a href="#第三步-部署到-GitHub" class="headerlink" title="第三步:部署到 GitHub"></a>第三步:部署到 GitHub</h5><p>一、安装 hexo-deployer-git 模块</p>
+<h4 id="第三步-部署到-GitHub"><a href="#第三步-部署到-GitHub" class="headerlink" title="第三步:部署到 GitHub"></a>第三步:部署到 GitHub</h4><p>一、安装 hexo-deployer-git 模块</p>
 <pre><code class="python">## 打开 cmd 到 D:\hexo 目录下
 cd D:\hexo
 
@@ -180,10 +529,10 @@ hexo d
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/init-hexo-blog/" data-id="cjwatg6sh00029oj3952j4hbs" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/hexo/hexo-init/" data-id="cjwhwe3yk0003fwj3wc769civ" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
 
       <!-- busuanzi_count -->
 
@@ -234,6 +583,12 @@ hexo d
     
     <div class="article-entry" itemprop="articleBody">
       
+        <div class="toc-parent">
+  <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    
+  </div>
+</div>
         <p>Hello World</p>
 <p><img src="/2019/05/30/index/index-demo.jpg" alt></p>
 <p>Image</p>
@@ -295,7 +650,7 @@ public class LibraryImpl implements Library {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjwatg6rw00019oj3iz9j3a68" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/index/" data-id="cjwhwe3vj0001fwj39x3416zd" class="article-share-link">Share</a>
       
       
       <!-- busuanzi_count -->
@@ -347,6 +702,12 @@ public class LibraryImpl implements Library {
     
     <div class="article-entry" itemprop="articleBody">
       
+        <div class="toc-parent">
+  <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+  </div>
+</div>
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
@@ -360,7 +721,7 @@ public class LibraryImpl implements Library {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/05/30/hello-world/" data-id="cjwatg6rq00009oj31cnet7pe" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/05/30/hello-world/" data-id="cjwhwe3va0000fwj39puba335" class="article-share-link">Share</a>
       
       
       <!-- busuanzi_count -->
@@ -403,7 +764,7 @@ public class LibraryImpl implements Library {
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
     </div>
   </div>
 
@@ -413,7 +774,7 @@ public class LibraryImpl implements Library {
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a>
     </div>
   </div>
 
@@ -422,7 +783,7 @@ public class LibraryImpl implements Library {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -435,7 +796,11 @@ public class LibraryImpl implements Library {
       <ul>
         
           <li>
-            <a href="/2019/05/30/init-hexo-blog/">Hexo + GitHub 搭建个人博客</a>
+            <a href="/2019/06/04/hexo/hexo-customer/">Hexo 博客配置 landscape 主题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/30/hexo/hexo-init/">Hexo + GitHub 搭建个人博客</a>
           </li>
         
           <li>
@@ -450,6 +815,11 @@ public class LibraryImpl implements Library {
     </div>
   </div>
 
+  
+    <div class="widget-wrap toc">
+  <h3 class="widget-title">Catalog</h3>
+  <div class="widget"></div>
+</div>
   
 </aside>
         
@@ -513,6 +883,10 @@ public class LibraryImpl implements Library {
 <script src="/js/script.js"></script>
 
 
+
+<!-- Toc -->
+<script src="/js/toc.js"></script>
+<!-- Toc -->
 
 <!-- SyntaxHighlighter -->
 
