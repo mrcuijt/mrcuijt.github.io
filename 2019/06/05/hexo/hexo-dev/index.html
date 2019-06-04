@@ -5,19 +5,20 @@
   
 
   
-  <title>Hello World | Mrcuijt&#39;s Blog</title>
+  <title>Hexo + GitHub 源码管理 | Mrcuijt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="Hexo + GitHub 源码管理从 GitHub 检出托管的 Hexo 静态站点 检出  ## 新建目录 mkdir hexo-dev  ## 进入 hexo-dev cd hexo-dev  ## 检出 master 分支 git clone https://github.com/mrcuijt/mrcuijt.github.io.git  ## 查看检出的仓库 ls ## mrcuijt.">
+<meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://mrcuijt.github.io/2019/06/04/hello-world/index.html">
+<meta property="og:title" content="Hexo + GitHub 源码管理">
+<meta property="og:url" content="http://mrcuijt.github.io/2019/06/05/hexo/hexo-dev/index.html">
 <meta property="og:site_name" content="Mrcuijt&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Hexo + GitHub 源码管理从 GitHub 检出托管的 Hexo 静态站点 检出  ## 新建目录 mkdir hexo-dev  ## 进入 hexo-dev cd hexo-dev  ## 检出 master 分支 git clone https://github.com/mrcuijt/mrcuijt.github.io.git  ## 查看检出的仓库 ls ## mrcuijt.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T18:31:16.845Z">
+<meta property="og:updated_time" content="2019-06-04T16:45:38.823Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Hexo + GitHub 源码管理">
+<meta name="twitter:description" content="Hexo + GitHub 源码管理从 GitHub 检出托管的 Hexo 静态站点 检出  ## 新建目录 mkdir hexo-dev  ## 进入 hexo-dev cd hexo-dev  ## 检出 master 分支 git clone https://github.com/mrcuijt/mrcuijt.github.io.git  ## 查看检出的仓库 ls ## mrcuijt.">
   
     <link rel="alternate" href="/atom.xml" title="Mrcuijt&#39;s Blog" type="application/atom+xml">
   
@@ -62,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-hexo/hexo-dev" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/04/hello-world/" class="article-date">
-  <time datetime="2019-06-04T14:58:14.239Z" itemprop="datePublished">2019-06-04</time>
+    <a href="/2019/06/05/hexo/hexo-dev/" class="article-date">
+  <time datetime="2019-06-04T16:04:40.000Z" itemprop="datePublished">2019-06-05</time>
 </a>
     
   </div>
@@ -76,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Hexo + GitHub 源码管理
     </h1>
   
 
@@ -87,25 +88,78 @@
         <div class="toc-parent">
   <div id="toc" class="toc-article">
     <div class="toc-title">目录</div>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo-GitHub-源码管理"><span class="toc-text">Hexo + GitHub 源码管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#从-GitHub-检出托管的-Hexo-静态站点"><span class="toc-text">从 GitHub 检出托管的 Hexo 静态站点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建新的-dev-空白分支"><span class="toc-text">创建新的 dev 空白分支</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除当前目录空白分支下全部文件"><span class="toc-text">删除当前目录空白分支下全部文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#提交-Hexo-源码到-dev-分支"><span class="toc-text">提交 Hexo 源码到 dev 分支</span></a></li></ol></li></ol>
   </div>
 </div>
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h4 id="Hexo-GitHub-源码管理"><a href="#Hexo-GitHub-源码管理" class="headerlink" title="Hexo + GitHub 源码管理"></a>Hexo + GitHub 源码管理</h4><h5 id="从-GitHub-检出托管的-Hexo-静态站点"><a href="#从-GitHub-检出托管的-Hexo-静态站点" class="headerlink" title="从 GitHub 检出托管的 Hexo 静态站点"></a>从 GitHub 检出托管的 Hexo 静态站点</h5><ul>
+<li>检出</li>
+</ul>
+<pre><code class="python">## 新建目录
+mkdir hexo-dev
+
+## 进入 hexo-dev
+cd hexo-dev
+
+## 检出 master 分支
+git clone https://github.com/mrcuijt/mrcuijt.github.io.git
+
+## 查看检出的仓库
+ls ## mrcuijt.github.io
+
+## 进入 mrcuijt.github.io 目录
+cd mrcuijt.github.io
+
+## 查看仓库状态
+git staus
+
+## 查看仓库提交日志
+git log</code></pre>
+<h5 id="创建新的-dev-空白分支"><a href="#创建新的-dev-空白分支" class="headerlink" title="创建新的 dev 空白分支"></a>创建新的 dev 空白分支</h5><pre><code class="python">## 创建新的空白分支，分支名称为 dev
+git checkout --orphan dev</code></pre>
+<h5 id="删除当前目录空白分支下全部文件"><a href="#删除当前目录空白分支下全部文件" class="headerlink" title="删除当前目录空白分支下全部文件"></a>删除当前目录空白分支下全部文件</h5><pre><code class="python">## 查看空白分支状态
+git status
+## 删除文件
+git rm -rf ./
+## 查看空白分支状态
+git status</code></pre>
+<h5 id="提交-Hexo-源码到-dev-分支"><a href="#提交-Hexo-源码到-dev-分支" class="headerlink" title="提交 Hexo 源码到 dev 分支"></a>提交 Hexo 源码到 dev 分支</h5><ul>
+<li>将 Hexo 目录下的文件拷贝到 <strong>mrcuijt.github.io</strong> 目录下</li>
+</ul>
+<pre><code class="python">## mrcuijt.github.io 目录结构
+.deploy_git
+.gitignore
+db.json
+node_modules
+package-lock.json
+package.json
+public
+scaffolds
+source
+tags
+themes
+_config.yml</code></pre>
+<ul>
+<li>提交代码到本地 dev 分支</li>
+</ul>
+<pre><code class="python">## 添加要提交的文件
+git add .
+
+## 提交
+git commit -m &quot;1、Hexo Dev Init&quot;</code></pre>
+<ul>
+<li>提交代码到远程 dev 仓库分支</li>
+</ul>
+<pre><code class="python">git push --set-upstream origin dev</code></pre>
+<p>完成</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mrcuijt.github.io/2019/06/04/hello-world/" data-id="cjwhy87nk00004wj3zb0w3a6u" class="article-share-link">Share</a>
+      <a data-url="http://mrcuijt.github.io/2019/06/05/hexo/hexo-dev/" data-id="cjwi1c0990005ykj3gi7wabym" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
       <!-- busuanzi_count -->
 
 <span id="busuanzi_container_page_pv">
@@ -152,9 +206,9 @@
 <nav id="article-nav">
   
   
-    <a href="/2019/06/04/hexo/hexo-customer/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo 博客配置 landscape 主题</div>
+      <div class="article-nav-title">Hello World</div>
     </a>
   
 </nav>
@@ -205,7 +259,11 @@
       <ul>
         
           <li>
-            <a href="/2019/06/04/hello-world/">Hello World</a>
+            <a href="/2019/06/05/hexo/hexo-dev/">Hexo + GitHub 源码管理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/05/hello-world/">Hello World</a>
           </li>
         
           <li>
